@@ -27,7 +27,7 @@ KBUILD_CFLAGS	+= $(call cc-option,-fno-dwarf2-cfi-asm)
 
 # Do not use arch/arm/defconfig - it's always outdated.
 # Select a platform tht is kept up-to-date
-KBUILD_DEFCONFIG := versatile_defconfig
+#KBUILD_DEFCONFIG := versatile_defconfig
 
 # defines filename extension depending memory management type.
 ifeq ($(CONFIG_MMU),)
@@ -129,16 +129,16 @@ CHECKFLAGS	+= -D__arm__
 #Default value
 head-y		:= arch/arm/kernel/head$(MMUEXT).o
 textofs-y	:= 0x00008000
-textofs-$(CONFIG_ARCH_CLPS711X) := 0x00028000
+#textofs-$(CONFIG_ARCH_CLPS711X) := 0x00028000
 # We don't want the htc bootloader to corrupt kernel during resume
-textofs-$(CONFIG_PM_H1940)      := 0x00108000
+#textofs-$(CONFIG_PM_H1940)      := 0x00108000
 # SA1111 DMA bug: we don't want the kernel to live in precious DMA-able memory
-ifeq ($(CONFIG_ARCH_SA1100),y)
-textofs-$(CONFIG_SA1111) := 0x00208000
-endif
-textofs-$(CONFIG_ARCH_MSM7X30) := 0x00208000
-textofs-$(CONFIG_ARCH_MSM8X60) := 0x00208000
-textofs-$(CONFIG_ARCH_MSM8960) := 0x00208000
+#ifeq ($(CONFIG_ARCH_SA1100),y)
+#extofs-$(CONFIG_SA1111) := 0x00208000
+#endif
+#textofs-$(CONFIG_ARCH_MSM7X30) := 0x00208000
+#textofs-$(CONFIG_ARCH_MSM8X60) := 0x00208000
+#textofs-$(CONFIG_ARCH_MSM8960) := 0x00208000
 textofs-$(CONFIG_ARCH_MT6582)  := 0x00008000
 
 # Machine directory name.  This list is sorted alphanumerically
